@@ -59,7 +59,7 @@ if (appName) {
 if (input) {
 	await open(input, options);
 } else {
-	const stdin = await streamConsumers.buffer();
+	const stdin = await streamConsumers.buffer(process.stdin);
 	const type = await fileTypeFromBuffer(stdin);
 	const extension = cli.flags.extension ?? type?.ext ?? 'txt';
 	const filePath = await temporaryWrite(stdin, {extension});
